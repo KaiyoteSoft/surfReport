@@ -1,0 +1,43 @@
+a:link {
+	color: blue;
+}
+
+a:visited {
+	color: purple;
+}
+
+a:hover {
+	color: green;
+}
+
+a:active {
+	color: red;
+}
+
+table, th {
+	padding: 10px;
+}
+
+#titleFont {
+	text-align: center;
+}
+
+#dataText {
+	float: left;
+	padding: 10px;
+}
+
+#tideText {
+	float:left;
+	padding: 20px;
+}
+
+#spotText {
+	padding: 10px; 
+	float: left;
+}
+
+#waveChartContainer {
+	float:left;
+}
+
