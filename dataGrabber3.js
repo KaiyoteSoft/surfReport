@@ -1,23 +1,3 @@
-// jQuery.ajax({
-// 	url: 'http://api.spitcast.com/api/county/spots/santa-cruz/',
-// 	type: 'GET',
-// 	success: function(resultData) { 
-// 		surfData = resultData;
-// 		// console.log(surfData[0]);
-
-// 		var spotNames = "";
-
-// 		for (i = 0; i < surfData.length; i++) {
-// 			spotId = surfData[i].spot_id;
-// 			spotNames = "<a>" + spotNames + "</a>" + "<br>" + "<a onclick=\"spotReport('" +
-//               spotId + "');\">" + surfData[i].spot_name + "</a>";
-// 		}
-
-// 		document.getElementById('dataText').innerHTML = spotNames;
-
-// 		}
-// });
-
 $.ajax({
 	url: "http://api.spitcast.com/api/county/spots/santa-cruz/",
 	type: "GET",

@@ -4,16 +4,34 @@
 <link rel="stylesheet" href="surfStyle.css">
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script type="text/javascript" src="jquery-3.0.0.js"></script>
-<script type="text/javascript" src="dataGrabber3.js"></script>
+<script type="text/javascript" src="dataGrabber2.js"></script>
 <script type="text/javascript" src="canvasjs.min.js"></script>
 </head>
 
 <body onload="tideGraph(); spotReport(147)">
-	<h1 id="titleFont">Santa Cruz Surf Report</h1>
-	<div id="dataText">Test</div>
+	<h1 id="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
+	<!-- <div id="dataText">Test</div> -->
+
 	<div id="spotText"></div>
 	<div id="container" style="height: 250px; width: 50%;"></div>
 	<div id="chartContainer" style="height: 250px; width: 50%;"></div>
+
+	<div class="dropdown2" onClick="myFunction()">
+	  <button class="dropbtn2">Favorite Surf Spots</button>
+	  <div class="dropdown-content2" id="favButton">
+	  	<a onClick="spotReport(147)">The Hook</a>
+    	<a onClick="spotReport(1)">Pleasure Point</a>
+    	<a onClick="spotReport(2)">Steamer Lane</a>
+    	<a onClick="spotReport(149)">Capitola</a>
+	  </div>
+	</div>
+
+	<!-- <div class="dropdown" onClick="myFunction()">
+	  <button class="dropbtn">All Surf Spots</button>
+	  <div class="dropdown-content" id="surfButton">
+	  </div>
+	</div> -->
+
 </body>
 
 </html>

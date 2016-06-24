@@ -1,3 +1,23 @@
+// jQuery.ajax({
+// 	url: 'http://api.spitcast.com/api/county/spots/santa-cruz/',
+// 	type: 'GET',
+// 	success: function(resultData) { 
+// 		surfData = resultData;
+// 		// console.log(surfData[0]);
+
+// 		var spotNames = "";
+
+// 		for (i = 0; i < surfData.length; i++) {
+// 			spotId = surfData[i].spot_id;
+// 			spotNames = "<a>" + spotNames + "</a>" + "<br>" + "<a onclick=\"spotReport('" +
+//               spotId + "');\">" + surfData[i].spot_name + "</a>";
+// 		}
+
+// 		document.getElementById('dataText').innerHTML = spotNames;
+
+// 		}
+// });
+
 jQuery.ajax({
 	url: 'http://api.spitcast.com/api/county/spots/santa-cruz/',
 	type: 'GET',
@@ -9,16 +29,38 @@ jQuery.ajax({
 
 		for (i = 0; i < surfData.length; i++) {
 			spotId = surfData[i].spot_id;
-			spotNames = "<a>" + spotNames + "</a>" + "<br>" + "<a onclick=\"spotReport('" +
+			spotNames = spotNames + "<a href=#container onclick=\"spotReport('" +
               spotId + "');\">" + surfData[i].spot_name + "</a>";
 		}
 
-		document.getElementById('dataText').innerHTML = spotNames;
+		document.getElementById('surfButton').innerHTML = spotNames;
 
 		}
 });
 
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
 function spotReport(id) {
+	document.getElementById('container').innerHTML = "<p>Loading...</p>";
 	var spotId = id;
 	jQuery.ajax({
 		url: 'http://api.spitcast.com/api/spot/forecast/' + spotId+ '/',
@@ -56,7 +98,7 @@ function spotReport(id) {
 			},
 			data: [
 			{
-				type: "spline", //change type to bar, line, area, pie, etc
+				type: "area", //change type to bar, line, area, pie, etc
 				showInLegend: false,        
 				dataPoints: [
 					{ label: "4AM", y: parseFloat(waveContainer[0])},
