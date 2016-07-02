@@ -1,30 +1,54 @@
-<html>
+<!DOCTYPE html> 
+<html lang="en">
 <head>
 <title>Santa Cruz Tide Graph</title>
-<link rel="stylesheet" href="surfStyle.css">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-<script type="text/javascript" src="jquery-3.0.0.js"></script>
-<script type="text/javascript" src="dataGrabber2.js"></script>
-<script type="text/javascript" src="canvasjs.min.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="surfStyle.css">
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+	<script type="text/javascript" src="jquery-3.0.0.js"></script>
+	<script type="text/javascript" src="dataGrabber2.js"></script>
+	<script type="text/javascript" src="canvasjs.min.js"></script>
+
+	<!-- Bootstrap CDN for easier styling -->
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
+
 <body onload="tideGraph(); spotReport(147)">
+<div class="container-fluid">
 	<h1 id="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
-	<!-- <div id="dataText">Test</div> -->
-
-	<div id="spotText"></div>
-	<div id="container" style="height: 250px; width: 50%;"></div>
-	<div id="chartContainer" style="height: 250px; width: 50%;"></div>
-
-	<div class="dropdown2" onClick="myFunction()">
-	  <button class="dropbtn2">Favorite Surf Spots</button>
-	  <div class="dropdown-content2" id="favButton">
-	  	<a onClick="spotReport(147)">The Hook</a>
-    	<a onClick="spotReport(1)">Pleasure Point</a>
-    	<a onClick="spotReport(2)">Steamer Lane</a>
-    	<a onClick="spotReport(149)">Capitola</a>
-	  </div>
+	
+	<div class="row">
+		<!-- <div id="spotText"></div> -->
+		<div class="col-sm-6">
+			<div id="container" style="height: 250px; width: 100%;"></div>
+			<div class="row">
+				<div class="dropdown">
+				  <button id="buttonAlign" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu"  id="buttonAlign" style="text-align: center;">
+				  	<li><a onClick="spotReport(147)">The Hook</a></li>
+			    	<li><a onClick="spotReport(1)">Pleasure Point</a></li>
+			    	<li><a onClick="spotReport(2)">Steamer Lane</a></li>
+			    	<li><a onClick="spotReport(149)">Capitola</a></li>
+				  </ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div id="chartContainer" style="height: 250px; width: 100%;"></div>
+		</div>
 	</div>
+</div>
 
 	<!-- <div class="dropdown" onClick="myFunction()">
 	  <button class="dropbtn">All Surf Spots</button>
