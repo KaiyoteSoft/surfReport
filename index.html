@@ -23,24 +23,47 @@
 </head>
 
 
-<body onload="tideGraph(); spotReport(147)">
-<div class="container-fluid">
-	<h1 id="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="tideGraph(); spotReport(147); windForecast()">
+
+<!-- Basic navigation bar that collapses on mobile; see lines 32 and 39 -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#surfNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">SC Surf Report</a>
+		</div>
+		<div class="collapse navbar-collapse" id="surfNavbar">
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#surfSection">Surf Report</a></li>
+			<li><a href="#weatherSection">Weather</a></li>
+		</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container-fluid" id="surfSection">
+	<h1 class="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
 	
 	<div class="row">
 		<!-- <div id="spotText"></div> -->
 		<div class="col-sm-6">
 			<div id="container" style="height: 250px; width: 100%;"></div>
 			<div class="row">
-				<div class="dropdown">
-				  <button id="buttonAlign" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu"  id="buttonAlign" style="text-align: center;">
-				  	<li><a onClick="spotReport(147)">The Hook</a></li>
-			    	<li><a onClick="spotReport(1)">Pleasure Point</a></li>
-			    	<li><a onClick="spotReport(2)">Steamer Lane</a></li>
-			    	<li><a onClick="spotReport(149)">Capitola</a></li>
-				  </ul>
+				<div class="col-sm-12">
+					<div class="dropdown">
+					  <button id="buttonAlign" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
+					  <span class="caret"></span></button>
+					  <ul class="dropdown-menu"  id="buttonAlign">
+					  	<li><a onClick="spotReport(147)">The Hook</a></li>
+				    	<li><a onClick="spotReport(1)">Pleasure Point</a></li>
+				    	<li><a onClick="spotReport(2)">Steamer Lane</a></li>
+				    	<li><a onClick="spotReport(149)">Capitola</a></li>
+					  </ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -50,11 +73,16 @@
 	</div>
 </div>
 
-	<!-- <div class="dropdown" onClick="myFunction()">
-	  <button class="dropbtn">All Surf Spots</button>
-	  <div class="dropdown-content" id="surfButton">
-	  </div>
-	</div> -->
+<div class="container-fluid" id="weatherSection">
+	<h2 class="titleFont">Weather Report</h2>
+	<div class="row">
+		<div class="col-sm-8">
+			<div id="chartContainer2" style="height: 250px; width: 100%"></div>
+		</div>
+		<div class="col-sm-4">
+		</div>
+	</div>
+</div>
 
 </body>
 

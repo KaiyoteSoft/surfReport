@@ -18,28 +18,22 @@ table, th {
 	padding: 10px;
 }
 
-#titleFont {
+.titleFont {
 	text-align: center;
+	font-weight: bold;
 }
 
-#dataText {
-	float: left;
-	padding: 10px;
+#surfSection {
+	padding-top: 50px;
+	/*background: rgba(255, 70, 70, 0.8);*/
 }
 
-#container {
-	float: left;
-	/*margin-left: 50px;*/
-	/*margin-right: 25px;*/
+#weatherSection {
+	padding-top: 50px;
+	/*background-color: #673ab7;*/
 }
 
 #buttonAlign{
 	margin-left: 80px;
-}
-
-#chartContainer {
-	float: left;
-	/*margin-left: 175px;*/
-	/*margin-right: 25px;*/
 }
 
