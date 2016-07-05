@@ -1,22 +1,22 @@
-jQuery.ajax({
-	url: 'http://api.spitcast.com/api/county/spots/santa-cruz/',
-	type: 'GET',
-	success: function(resultData) { 
-		surfData = resultData;
-		// console.log(surfData[0]);
+// jQuery.ajax({
+// 	url: 'http://api.spitcast.com/api/county/spots/santa-cruz/',
+// 	type: 'GET',
+// 	success: function(resultData) { 
+// 		surfData = resultData;
+// 		// console.log(surfData[0]);
 
-		var spotNames = "";
+// 		var spotNames = "";
 
-		for (i = 0; i < surfData.length; i++) {
-			spotId = surfData[i].spot_id;
-			spotNames = spotNames + "<a href=#container onclick=\"spotReport('" +
-              spotId + "');\">" + surfData[i].spot_name + "</a>";
-		}
+// 		for (i = 0; i < surfData.length; i++) {
+// 			spotId = surfData[i].spot_id;
+// 			spotNames = spotNames + "<a href=#container onclick=\"spotReport('" +
+//               spotId + "');\">" + surfData[i].spot_name + "</a>";
+// 		}
 
-		// document.getElementById('surfButton').innerHTML = spotNames;
+// 		// document.getElementById('surfButton').innerHTML = spotNames;
 
-		}
-});
+// 		}
+// });
 
 
 function spotReport(id) {
@@ -76,6 +76,7 @@ function spotReport(id) {
     		var chart = new CanvasJS.Chart("container",
 			{
 			animationEnabled: true,
+			interactivityEnabled: false,
 			title:{
 				text: spotName + " Spot Report"
 			},
@@ -148,6 +149,7 @@ function tideGraph() {
 			var chart = new CanvasJS.Chart("chartContainer",
 			{
 			animationEnabled: true,
+			interactivityEnabled: false,
 			title:{
 				text: "Santa Cruz Tide Graph"
 			},
@@ -191,7 +193,7 @@ function tideGraph() {
 					if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
 						e.dataSeries.visible = false;
 					} else {
-						e.dataSeries.visible = true;
+						e.dataSeries.visible = false;
 				}
 				chart.render();
 				}
@@ -227,6 +229,7 @@ function windForecast() {
 			var chart = new CanvasJS.Chart("chartContainer2",
 			{
 			animationEnabled: false,
+			interactivityEnabled: false,
 			title:{
 				text: "Wind Graph"
 			},
