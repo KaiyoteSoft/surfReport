@@ -14,6 +14,7 @@
 	<!-- Bootstrap CDN for easier styling -->
 
 	<!-- Latest compiled and minified CSS -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
@@ -24,7 +25,7 @@
 </head>
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="tideGraph(); spotReport(147); windForecast(); sunrise(); weatherConditions();">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="tideGraph(); spotReport(147); windForecast(); sunrise(); weatherConditions(); generalForecast();">
 
 <!-- Basic navigation bar that collapses on mobile; see lines 32 and 39 -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -48,8 +49,30 @@
 
 <!-- First section — contains tide and surf forecast -->
 <div class="container-fluid" id="surfSection">
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6" style="text-align:center;">
+			<table style="text-align:center;" class="table table-striped">
+				<thead>
+					<tr>
+						<th style="text-align:center;">General Forecast</th>
+					<tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="waveSize"></td>
+					</tr>
+					<tr>
+						<td id="waveShape"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-3"></div>
+		
+	</div>
+
 	<h1 class="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
-<body onload="tideGraph(); spotReport(147)">
 <div class="container-fluid">	
 	<div class="row">
 		<!-- <div id="spotText"></div> -->
@@ -128,8 +151,8 @@
 <!-- Code for footer, mainly attributing the many API's I used -->
 <footer>
 	<p>Developed by Kai Oda</p>
-	<p>Powered by Spitcast API</p>
-	<p>Additional content from Weather API and Sunrise Sunset API</p>
+	<p>Powered by <a target="_blank" href="http://www.spitcast.com/">Spitcast API</a></p>
+	<p>Additional content from <a target="_blank" href="https://www.wunderground.com/">Weather API</a> and <a href="https://github.com/mourner/suncalc" target="_blank"> SunCalc Library</a></p>
 </footer>
 </body>
 

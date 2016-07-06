@@ -18,6 +18,44 @@
 // 		}
 // });
 
+function generalForecast() {
+	jQuery.ajax ({
+		url: 'http://api.spitcast.com/api/spot/forecast/2/',
+		type: 'GET',
+		success: function(steamerLane) {
+			var waveData = steamerLane;
+
+			var maxWaveSize = waveData[0].size;
+			console.log(maxWaveSize);
+
+		jQuery.ajax ({
+			url: 'http://api.spitcast.com/api/spot/forecast/149/',
+			type: 'GET',
+			success: function(capitola) {
+				var waveData2 = capitola;
+
+				var minWaveSize = waveData2[0].size;
+				console.log(minWaveSize);
+				document.getElementById('waveSize').innerHTML = minWaveSize + " - " + maxWaveSize + " feet";
+				}
+			})
+			
+		}
+	})
+
+	jQuery.ajax ({
+	url: 'http://api.spitcast.com/api/spot/forecast/147/',
+	type: 'GET',
+	success: function(hook) {
+		var waveData3 = hook;
+
+		var waveShape = waveData3[0].shape_full;
+		console.log(waveShape);
+		document.getElementById('waveShape').innerHTML = "Wave Shape: " + waveShape;
+		}
+	})
+}
+
 
 function spotReport(id) {
 	document.getElementById('container').innerHTML = "<p>Loading...</p>";
@@ -295,7 +333,7 @@ function weatherConditions() {
 			var low = weatherData.forecast.simpleforecast.forecastday[0].low.fahrenheit;
 			var date = weatherData.forecast.simpleforecast.forecastday[0].date.pretty;
 			var editedDate = date.substring(15);
-			console.log(high, low, date)
+			// console.log(high, low, date)
 
 			document.getElementById('date').innerHTML = editedDate;
 			document.getElementById('maxTemp').innerHTML = high + "&deg;F";
@@ -318,6 +356,6 @@ function sunrise() {
 	document.getElementById('dawn').innerHTML = dawnStr + " AM";
 	document.getElementById('sunrise').innerHTML = sunriseStr + " AM";
 	document.getElementById('sunset').innerHTML = sunsetStr;
-    console.log(dawnStr, sunriseStr, sunsetStr);
+    // console.log(dawnStr, sunriseStr, sunsetStr);
 };
 
