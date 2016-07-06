@@ -69,8 +69,6 @@ function spotReport(id) {
 				var blue = 15;
 			};
 
-			console.log(waveShape)
-
 // Code for the graph of the wave height for specific spots
 // The values of the graph should change based on the spot selected
     		var chart = new CanvasJS.Chart("container",
@@ -286,4 +284,40 @@ function windForecast() {
 		})
 }
 
+function weatherConditions() {
+	jQuery.ajax ({
+		url: 'http://api.wunderground.com/api/b3d5e35f819da87c/forecast/q/CA/Santa_cruz.json',
+		type: 'GET',
+		success: function(weatherResult) {
+			var weatherData = weatherResult;
+
+			var high = weatherData.forecast.simpleforecast.forecastday[0].high.fahrenheit;
+			var low = weatherData.forecast.simpleforecast.forecastday[0].low.fahrenheit;
+			var date = weatherData.forecast.simpleforecast.forecastday[0].date.pretty;
+			var editedDate = date.substring(15);
+			console.log(high, low, date)
+
+			document.getElementById('date').innerHTML = editedDate;
+			document.getElementById('maxTemp').innerHTML = high + "&deg;F";
+			document.getElementById('minTemp').innerHTML = low + "&deg;F";		
+		}
+	})
+}
+
+function sunrise() {
+    // get today's sunlight times for London
+    var times = SunCalc.getTimes(new Date(), 36.959983, -121.965324);
+
+    // format sunrise time from the Date object
+    var dawnStr = times.dawn.getHours() + ':' + times.dawn.getMinutes();
+    var sunriseStr = times.sunrise.getHours() + ':' + times.sunrise.getMinutes();
+    var sunsetStr = times.sunset.getHours() + ':' + times.sunset.getMinutes();
+
+    // var adjustedTime = sunsetStr - 12; 	
+
+	document.getElementById('dawn').innerHTML = dawnStr + " AM";
+	document.getElementById('sunrise').innerHTML = sunriseStr + " AM";
+	document.getElementById('sunset').innerHTML = sunsetStr;
+    console.log(dawnStr, sunriseStr, sunsetStr);
+};
 

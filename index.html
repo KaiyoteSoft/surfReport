@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="jquery-3.0.0.js"></script>
 	<script type="text/javascript" src="dataGrabber2.js"></script>
 	<script type="text/javascript" src="canvasjs.min.js"></script>
+	<script type="text/javascript" src="suncalc.js"></script>
 
 	<!-- Bootstrap CDN for easier styling -->
 
@@ -23,7 +24,7 @@
 </head>
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="tideGraph(); spotReport(147); windForecast()">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="tideGraph(); spotReport(147); windForecast(); sunrise(); weatherConditions();">
 
 <!-- Basic navigation bar that collapses on mobile; see lines 32 and 39 -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -45,6 +46,7 @@
 	</div>
 </nav>
 
+<!-- First section — contains tide and surf forecast -->
 <div class="container-fluid" id="surfSection">
 	<h1 class="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
 <body onload="tideGraph(); spotReport(147)">
@@ -56,7 +58,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="dropdown">
-					  <button id="buttonAlign" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
+					  <button id="buttonAlign" class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu"  id="buttonAlign">
 					  	<li><a onClick="spotReport(147)">The Hook</a></li>
@@ -74,17 +76,61 @@
 	</div>
 </div>
 
+<!-- Second section — contains wind, sunrise / sunset and air / water temperature -->
 <div class="container-fluid" id="weatherSection">
 	<h2 class="titleFont">Weather Report</h2>
 	<div class="row">
-		<div class="col-sm-8">
+		<div class="col-sm-7">
 			<div id="chartContainer2" style="height: 250px; width: 100%"></div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-5">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Max Temp</th>
+						<th>Min Temp</th>
+					<tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="date"></td>
+						<td id="maxTemp"></td>
+						<td id="minTemp"></td> 
+					</tr>
+				</tbody>
+			</table>
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Dawn</th>
+								<th>Sunrise</th>
+								<th>Sunset</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td id="dawn"></td>
+								<td id="sunrise"></td>
+								<td id="sunset"></td> 
+							</tr>
+						</tbody>
+					</table>			
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
+
+<!-- Code for footer, mainly attributing the many API's I used -->
+<footer>
+	<p>Developed by Kai Oda</p>
+	<p>Powered by Spitcast API</p>
+	<p>Additional content from Weather API and Sunrise Sunset API</p>
+</footer>
 </body>
 
 </html>

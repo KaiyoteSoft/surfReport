@@ -37,3 +37,9 @@ table, th {
 	margin-left: 80px;
 }
 
+footer {
+	text-align: center;
+	font-weight: bold;
+	padding-top: 30px;
+	background-color: #f6f6f6 ;
+}
