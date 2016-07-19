@@ -1,41 +1,28 @@
-// jQuery.ajax({
-// 	url: 'http://api.spitcast.com/api/county/spots/santa-cruz/',
-// 	type: 'GET',
-// 	success: function(resultData) { 
-// 		surfData = resultData;
-// 		// console.log(surfData[0]);
+function padNumber(number) {
+    var string  = '' + number;
+    string      = string.length < 2 ? '0' + string : string;
+    return string;
+};
 
-// 		var spotNames = "";
-
-// 		for (i = 0; i < surfData.length; i++) {
-// 			spotId = surfData[i].spot_id;
-// 			spotNames = spotNames + "<a href=#container onclick=\"spotReport('" +
-//               spotId + "');\">" + surfData[i].spot_name + "</a>";
-// 		}
-
-// 		// document.getElementById('surfButton').innerHTML = spotNames;
-
-// 		}
-// });
-
-function generalForecast() {
+function generalForecast(date) {
+	var forecastDate = date;
 	jQuery.ajax ({
-		url: 'http://api.spitcast.com/api/spot/forecast/2/',
+		url: 'http://api.spitcast.com/api/spot/forecast/2/?dcat=day&dval='+forecastDate,
 		type: 'GET',
 		success: function(steamerLane) {
 			var waveData = steamerLane;
 
 			var maxWaveSize = waveData[0].size;
-			console.log(maxWaveSize);
+			// console.log(maxWaveSize);
 
 		jQuery.ajax ({
-			url: 'http://api.spitcast.com/api/spot/forecast/149/',
+			url: 'http://api.spitcast.com/api/spot/forecast/149/?dcat=day&dval='+forecastDate,
 			type: 'GET',
 			success: function(capitola) {
 				var waveData2 = capitola;
 
 				var minWaveSize = waveData2[0].size;
-				console.log(minWaveSize);
+				// console.log(minWaveSize);
 				document.getElementById('waveSize').innerHTML = minWaveSize + " - " + maxWaveSize + " feet";
 				}
 			})
@@ -44,24 +31,26 @@ function generalForecast() {
 	})
 
 	jQuery.ajax ({
-	url: 'http://api.spitcast.com/api/spot/forecast/147/',
+	url: 'http://api.spitcast.com/api/spot/forecast/147/?dcat=day&dval='+forecastDate,
 	type: 'GET',
 	success: function(hook) {
 		var waveData3 = hook;
 
 		var waveShape = waveData3[0].shape_full;
-		console.log(waveShape);
+		// console.log(waveShape);
 		document.getElementById('waveShape').innerHTML = "Wave Shape: " + waveShape;
+		// document.getElementById('elem').innerHTML = formatted;
 		}
 	})
 }
 
 
-function spotReport(id) {
+var spotReport = function(id, date) {
 	document.getElementById('container').innerHTML = "<p>Loading...</p>";
 	var spotId = id;
+	var forecastDate = date;
 	jQuery.ajax({
-		url: 'http://api.spitcast.com/api/spot/forecast/' + spotId+ '/',
+		url: 'http://api.spitcast.com/api/spot/forecast/' + spotId+ '/?dcat=day&dval='+forecastDate,
 		type: 'GET',
 		success: function(data) {
 			spotData = data;
@@ -156,13 +145,15 @@ function spotReport(id) {
 			}
 		});
 			chart.render();	
+			return spotId;
 		}
 	})
 }
 
-function tideGraph() {
+function tideGraph(date) {
+	var forecastDate = date;
 	jQuery.ajax({
-		url: 'http://api.spitcast.com/api/county/tide/santa-cruz/',
+		url: 'http://api.spitcast.com/api/county/tide/santa-cruz/?dcat=day&dval='+forecastDate,
 		Type: 'GET',
 		success: function(tideResult) {
 			var tideData = tideResult; 
@@ -322,16 +313,19 @@ function windForecast() {
 		})
 }
 
-function weatherConditions() {
+function weatherConditions(days) {
 	jQuery.ajax ({
 		url: 'http://api.wunderground.com/api/b3d5e35f819da87c/forecast/q/CA/Santa_cruz.json',
 		type: 'GET',
 		success: function(weatherResult) {
 			var weatherData = weatherResult;
+			if (days==null) {
+				days=0;
+			}
 
-			var high = weatherData.forecast.simpleforecast.forecastday[0].high.fahrenheit;
-			var low = weatherData.forecast.simpleforecast.forecastday[0].low.fahrenheit;
-			var date = weatherData.forecast.simpleforecast.forecastday[0].date.pretty;
+			var high = weatherData.forecast.simpleforecast.forecastday[days].high.fahrenheit;
+			var low = weatherData.forecast.simpleforecast.forecastday[days].low.fahrenheit;
+			var date = weatherData.forecast.simpleforecast.forecastday[days].date.pretty;
 			var editedDate = date.substring(15);
 			// console.log(high, low, date)
 
@@ -342,9 +336,12 @@ function weatherConditions() {
 	})
 }
 
-function sunrise() {
+function sunrise(days) {
+	if (days==null) {
+		days=0;
+	}
     // get today's sunlight times for London
-    var times = SunCalc.getTimes(new Date(), 36.959983, -121.965324);
+    var times = SunCalc.getTimes(new Date(date.setDate(date.getDate() + days)), 36.959983, -121.965324);
 
     // format sunrise time from the Date object
     var dawnStr = times.dawn.getHours() + ':' + times.dawn.getMinutes();
@@ -359,3 +356,15 @@ function sunrise() {
     // console.log(dawnStr, sunriseStr, sunsetStr);
 };
 
+function forecast(days) {
+	date      = new Date();
+	next_date = new Date(date.setDate(date.getDate() + days));
+	console.log(next_date)
+	formatted = next_date.getUTCFullYear() + padNumber(next_date.getUTCMonth() + 1) + padNumber(next_date.getUTCDate());
+	generalForecast(formatted);
+	spotReport(147, formatted);
+	tideGraph(formatted);
+	sunrise(days);
+	weatherConditions(days);
+	// return formatted;
+};
