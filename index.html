@@ -71,11 +71,11 @@
 			<table style="text-align:center;" class="table table-striped">
 				<thead>
 					<tr>
-						<th style="text-align:center;">General Forecast</th>
+						<th id="titleForecast" style="text-align:center;">General Forecast</th>
 					<tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr>	
 						<td id="waveSize"></td>
 					</tr>
 					<tr>
@@ -85,9 +85,12 @@
 			</table>
 		</div>
 <script>
+	// var formatted; 
+	// function updateDate(days) {
 	date      = new Date();
-	next_date = new Date(date.setDate(date.getDate() + 0));
+	next_date = new Date(date.setDate(date.getDate()));
 	formatted = next_date.getUTCFullYear() + padNumber(next_date.getUTCMonth() + 1) + padNumber(next_date.getUTCDate());
+	// };
 </script>
 		<div class="col-sm-2">
 			<div class="dropdown">
@@ -118,10 +121,10 @@
 					  <button id="buttonAlign" class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu"  id="buttonAlign">
-					  	<li><a onClick="spotReport(147)">The Hook</a></li>
-				    	<li><a onClick="spotReport(1)">Pleasure Point</a></li>
-				    	<li><a onClick="spotReport(2)">Steamer Lane</a></li>
-				    	<li><a onClick="spotReport(149)">Capitola</a></li>
+					  	<li><a onClick="spotReport(147, formatted)">The Hook</a></li>
+				    	<li><a onClick="spotReport(1, formatted)">Pleasure Point</a></li>
+				    	<li><a onClick="spotReport(2, formatted)">Steamer Lane</a></li>
+				    	<li><a onClick="spotReport(149, formatted)">Capitola</a></li>
 					  </ul>
 					</div>
 				</div>

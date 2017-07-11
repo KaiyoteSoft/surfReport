@@ -1,3 +1,6 @@
+var editedDate; 
+var spotId; 
+
 function padNumber(number) {
     var string  = '' + number;
     string      = string.length < 2 ? '0' + string : string;
@@ -16,10 +19,10 @@ function generalForecast(date) {
 			// console.log(maxWaveSize);
 
 		jQuery.ajax ({
-			url: 'http://api.spitcast.com/api/spot/forecast/149/?dcat=day&dval='+forecastDate,
+			url: 'http://api.spitcast.com/api/spot/forecast/147/?dcat=day&dval='+forecastDate,
 			type: 'GET',
-			success: function(capitola) {
-				var waveData2 = capitola;
+			success: function(hook) {
+				var waveData2 = hook;
 
 				var minWaveSize = waveData2[0].size;
 				// console.log(minWaveSize);
@@ -37,7 +40,6 @@ function generalForecast(date) {
 		var waveData3 = hook;
 
 		var waveShape = waveData3[0].shape_full;
-		// console.log(waveShape);
 		document.getElementById('waveShape').innerHTML = "Wave Shape: " + waveShape;
 		// document.getElementById('elem').innerHTML = formatted;
 		}
@@ -47,7 +49,7 @@ function generalForecast(date) {
 
 var spotReport = function(id, date) {
 	document.getElementById('container').innerHTML = "<p>Loading...</p>";
-	var spotId = id;
+	spotId = id;
 	var forecastDate = date;
 	jQuery.ajax({
 		url: 'http://api.spitcast.com/api/spot/forecast/' + spotId+ '/?dcat=day&dval='+forecastDate,
@@ -326,12 +328,15 @@ function weatherConditions(days) {
 			var high = weatherData.forecast.simpleforecast.forecastday[days].high.fahrenheit;
 			var low = weatherData.forecast.simpleforecast.forecastday[days].low.fahrenheit;
 			var date = weatherData.forecast.simpleforecast.forecastday[days].date.pretty;
-			var editedDate = date.substring(15);
+			editedDate = date.substring(15);
+			console.log(editedDate);
 			// console.log(high, low, date)
 
 			document.getElementById('date').innerHTML = editedDate;
 			document.getElementById('maxTemp').innerHTML = high + "&deg;F";
 			document.getElementById('minTemp').innerHTML = low + "&deg;F";		
+			document.getElementById('titleForecast').innerHTML = "General Forecast (" + editedDate + ")";
+			return editedDate;
 		}
 	})
 }
@@ -362,9 +367,10 @@ function forecast(days) {
 	console.log(next_date)
 	formatted = next_date.getUTCFullYear() + padNumber(next_date.getUTCMonth() + 1) + padNumber(next_date.getUTCDate());
 	generalForecast(formatted);
-	spotReport(147, formatted);
+	spotReport(spotId, formatted);
 	tideGraph(formatted);
 	sunrise(days);
 	weatherConditions(days);
+	console.log(spotId);
 	// return formatted;
 };
