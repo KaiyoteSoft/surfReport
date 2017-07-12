@@ -1,4 +1,4 @@
-# Live site can be found at: [bit.ly/kaiSurf](bit.ly/kaiSurf)
+# Live site can be found at: [bit.ly/kaiSurf](http://45.55.31.80/surfReport)
 Light program that gives surf information for spots within Santa Cruz and Santa Barbara (since these are the only places I surf).
 This site is powered by:
 * [Spitcast API](http://www.spitcast.com/)
