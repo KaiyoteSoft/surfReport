@@ -1,13 +1,15 @@
 <!DOCTYPE html> 
 <html lang="en">
 <head>
-<title>Santa Cruz Tide Graph</title>
+<title>Kai's Surf Report</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="surfStyle.css">
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="dataGrabber2.js"></script>
+	<script type="text/javascript" src="weather.js"></script>
+	<script type="text/javascript" src="barbaraData.js"></script>
 	<script type="text/javascript" src="canvasjs.min.js"></script>
 	<script type="text/javascript" src="suncalc.js"></script>
 
@@ -25,7 +27,7 @@
 </head>
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="tideGraph(); spotReport(147); windForecast(); sunrise(); weatherConditions(); generalForecast();">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="tideGraph(formatted, 'santa-cruz', 'Santa Cruz'); spotReport(147); windForecast(); sunrise(); weatherConditions(); generalForecast(null, 2, 147);">
 
 <!-- Basic navigation bar that collapses on mobile; see lines 32 and 39 -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -36,11 +38,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">SC Surf Report</a>
+			<a class="navbar-brand" href="#">Kai's Surf Report</a>
 		</div>
 		<div class="collapse navbar-collapse" id="surfNavbar">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#surfSection">Surf Report</a></li>
+			<li class="active"><a onClick="cruzData()" href="#surfSection">Santa Cruz</a></li>
+			<li><a onClick="barbaraData();">Santa Barbara</a></li>
 			<li><a href="#weatherSection">Weather</a></li>
 		</ul>
 		</div>
@@ -98,10 +101,10 @@
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a onClick="forecast(0, formatted)">Today</a></li>
-					<li><a onClick="forecast(1, formatted)">Tomorrow</a></li>
-					<li><a onClick="forecast(2, formatted)">Two-day Forecast</a></li>
-					<li><a onClick="forecast(3, formatted)">Three-day Forecast</a></li>
+					<li><a onClick="forecast(0)">Today</a></li>
+					<li><a onClick="forecast(1)">Tomorrow</a></li>
+					<li><a onClick="forecast(2)">Two-day Forecast</a></li>
+					<li><a onClick="forecast(3)">Three-day Forecast</a></li>
 				</ul>
 			</div>
 		</div>
@@ -109,7 +112,7 @@
 		
 	</div>
 
-	<h1 class="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
+	<h1 id="titlePage" class="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
 <div class="container-fluid">	
 	<div class="row">
 		<!-- <div id="spotText"></div> -->
