@@ -55,7 +55,7 @@
 	<div class="row">
 		<div class="col-sm-2">
 		</div>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<table style="text-align:center;" class="table table-striped">
 				<tbody>
 					<tr>
@@ -95,22 +95,27 @@
 	formatted = next_date.getUTCFullYear() + padNumber(next_date.getUTCMonth() + 1) + padNumber(next_date.getUTCDate());
 	// };
 </script>
-		<div class="col-sm-2">
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Surf Forecast
-					<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a onClick="forecast(0)">Today</a></li>
-					<li><a onClick="forecast(1)">Tomorrow</a></li>
-					<li><a onClick="forecast(2)">Two-day Forecast</a></li>
-					<li><a onClick="forecast(3)">Three-day Forecast</a></li>
-				</ul>
-			</div>
-		</div>
 		<div class="col-sm-2"></div>
 		
 	</div>
+
+<div class="row">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4">
+		<div style="text-align: center;" class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Surf Forecast
+				<span class="caret"></span>
+			</button>
+			<ul id="centerMenu" class="dropdown-menu">
+				<li><a onClick="forecast(0)">Today</a></li>
+				<li><a onClick="forecast(1)">Tomorrow</a></li>
+				<li><a onClick="forecast(2)">Two-day Forecast</a></li>
+				<li><a onClick="forecast(3)">Three-day Forecast</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-sm-4"></div>
+</div>
 
 	<h1 id="titlePage" class="titleFont">Santa Cruz Surf Report and Tide Graph</h1>
 <div class="container-fluid">	
@@ -119,15 +124,26 @@
 		<div class="col-sm-6">
 			<div id="container" style="height: 250px; width: 100%;"></div>
 			<div class="row">
-				<div class="col-sm-12">
-					<div class="dropdown">
-					  <button id="buttonAlign" class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
+				<div id="cruzButton">
+					<div style="text-align: center;" class="dropdown">
+					  <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
 					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu"  id="buttonAlign">
+					  <ul class="dropdown-menu"  id="centerMenu">
 					  	<li><a onClick="spotReport(147, formatted)">The Hook</a></li>
 				    	<li><a onClick="spotReport(1, formatted)">Pleasure Point</a></li>
 				    	<li><a onClick="spotReport(2, formatted)">Steamer Lane</a></li>
 				    	<li><a onClick="spotReport(149, formatted)">Capitola</a></li>
+					  </ul>
+					</div>
+				</div>
+				<div style="visibility:hidden;" id="barbaraButton">
+					<div style="text-align: center;" class="dropdown">
+					  <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Favorite Surf Spots
+					  <span class="caret"></span></button>
+					  <ul class="dropdown-menu"  id="centerMenu">
+					  	<li><a onClick="spotReport(198, formatted)">Rincon</a></li>
+				    	<li><a onClick="spotReport(179, formatted)">Campus Point</a></li>
+				    	<li><a onClick="spotReport(182, formatted)">Sands</a></li>
 					  </ul>
 					</div>
 				</div>

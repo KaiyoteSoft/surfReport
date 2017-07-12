@@ -128,13 +128,13 @@ function sunrise(days) {
 function forecast(days) { 
 	date      = new Date();
 	next_date = new Date(date.setDate(date.getDate() + days));
-	console.log(next_date)
+	// console.log(next_date)
 	formatted = next_date.getUTCFullYear() + padNumber(next_date.getUTCMonth() + 1) + padNumber(next_date.getUTCDate());
 	generalForecast(formatted, spotOne, spotTwo);
 	spotReport(spotId, formatted);
 	tideGraph(formatted, spot, title);
 	sunrise(days);
 	weatherConditions(days);
-	console.log(spot);
+	// console.log(spot);
 	// return formatted;
 };

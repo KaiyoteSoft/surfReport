@@ -71,11 +71,12 @@ var spotReport = function(id, date) {
 				waveContainer.push(editedWaveSize);
 				var time = spotData[i].hour;
 				var spotName = spotData[0].spot_name;
-				var waveShape = spotData[0].shape_full;
+				var waveShape = spotData[5].shape_detail.swell;
 			}
 
 			var finalWaveSize = spotData[22].size_ft;
 			var editedWaveSize = parseFloat(finalWaveSize.toFixed(2));
+			console.log(waveShape);
 
 		// Conditions to determine color of graph depending on wave shape
 			if (waveShape == "Poor") {
@@ -95,13 +96,13 @@ var spotReport = function(id, date) {
 			};
 			if (waveShape == "Fair-Good") {
 				red = 87;
-				green = 255;
-				blue = 84;
+				green = 200;
+				blue = 140;
 			};
 			if (waveShape == "Good") {
 				var red = 0;
-				var green = 218;
-				var blue = 15;
+				var green = 225;
+				var blue = 80;
 			};
 
 // Code for the graph of the wave height for specific spots

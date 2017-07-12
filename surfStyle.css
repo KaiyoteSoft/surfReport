@@ -18,6 +18,13 @@ table, th {
 	padding: 10px;
 }
 
+#centerMenu {
+	left: 50%;
+  	right: auto;
+  	text-align: center;
+  	transform: translate(-50%, 0);
+}
+
 .titleFont {
 	text-align: center;
 	font-weight: bold;

@@ -8,6 +8,12 @@ function barbaraData() {
 	spotTwo=198;
 	generalForecast(null, spotOne, spotTwo);
 	windForecast();
+	var cruz = document.getElementById("cruzButton");
+	cruz.style.visibility = "hidden";
+	cruz.style.display = "none";
+	var barbara = document.getElementById("barbaraButton");
+	barbara.style.visibility = "visible";
+	barbara.style.display = "block";
 }
 
 function cruzData() {
@@ -20,4 +26,10 @@ function cruzData() {
 	spotTwo=147;
 	generalForecast(null, spotOne, spotTwo);
 	windForecast();
+	var cruz = document.getElementById("cruzButton");
+	cruz.style.visibility = "visible";
+	cruz.style.display = "block";
+	var barbara = document.getElementById("barbaraButton");
+	barbara.style.visibility = "hidden";
+	barbara.style.display = "none";
 }
