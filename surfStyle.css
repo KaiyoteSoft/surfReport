@@ -18,6 +18,16 @@ table, th {
 	padding: 10px;
 }
 
+li {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 110%;
+}
+
+#homeButton {
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 130;
+}
+
 #centerMenu {
 	left: 50%;
   	right: auto;

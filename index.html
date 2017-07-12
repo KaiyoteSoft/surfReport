@@ -4,6 +4,7 @@
 <title>Kai's Surf Report</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 	<link rel="stylesheet" href="surfStyle.css">
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -38,11 +39,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Kai's Surf Report</a>
+			<a class="navbar-brand" id="homeButton" href="#surfSection">Kai's Surf Report</a>
 		</div>
 		<div class="collapse navbar-collapse" id="surfNavbar">
 		<ul class="nav navbar-nav">
-			<li class="active"><a onClick="cruzData()" href="#surfSection">Santa Cruz</a></li>
+			<li><a onClick="cruzData()">Santa Cruz</a></li>
 			<li><a onClick="barbaraData();">Santa Barbara</a></li>
 			<li><a href="#weatherSection">Weather</a></li>
 		</ul>
@@ -88,12 +89,9 @@
 			</table>
 		</div>
 <script>
-	// var formatted; 
-	// function updateDate(days) {
 	date      = new Date();
 	next_date = new Date(date.setDate(date.getDate()));
 	formatted = next_date.getUTCFullYear() + padNumber(next_date.getUTCMonth() + 1) + padNumber(next_date.getUTCDate());
-	// };
 </script>
 		<div class="col-sm-2"></div>
 		
