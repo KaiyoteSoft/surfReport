@@ -1,3 +1,4 @@
+var day; 
 function windForecast() {
 	jQuery.ajax({
 		url: 'http://api.spitcast.com/api/county/wind/'+spot+'/',
@@ -92,8 +93,10 @@ function weatherConditions(days) {
 			var high = weatherData.forecast.simpleforecast.forecastday[days].high.fahrenheit;
 			var low = weatherData.forecast.simpleforecast.forecastday[days].low.fahrenheit;
 			var date = weatherData.forecast.simpleforecast.forecastday[days].date.pretty;
+			day = weatherData.forecast.simpleforecast.forecastday[days].date.weekday; 
 			editedDate = date.substring(15);
-			console.log(editedDate);
+			document.getElementById("titlePage").innerHTML = title + " Surf Report (" + day + ")";
+			console.log(day);
 			// console.log(high, low, date)
 
 			document.getElementById('date').innerHTML = editedDate;
@@ -138,3 +141,4 @@ function forecast(days) {
 	// console.log(spot);
 	// return formatted;
 };
+

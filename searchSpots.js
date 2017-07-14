@@ -12,7 +12,8 @@ function searchSpots(county) {
 				spotName = data[i].spot_name;
 				spotId = data[i].spot_id;
 				// console.log(countyName);
-				listContainer.push('<tr><td>' + countyName + '</td><td><a onClick=spotReport('+spotId+');>' + spotName + '</a></td></tr>');
+				listContainer.push('<tr><td>' + countyName + '</td><td><a href="#top" onClick=spotReport('+spotId+');>' 
+					+ spotName + '</a></td></tr>');
 			}
 			spotReport(data[0].spot_id);
 			var strippedContainer = listContainer.join("");

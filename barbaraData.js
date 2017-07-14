@@ -3,7 +3,7 @@ function barbaraData() {
 	tideGraph(null, "santa-barbara", "Santa Barbara");
 	spot="santa-barbara";
 	title="Santa Barbara";
-	document.getElementById("titlePage").innerHTML = title + " Surf Report and Tide Graph"
+	document.getElementById("titlePage").innerHTML = title + " Surf Report (" + day + ")";
 	spotOne=179;
 	spotTwo=198;
 	generalForecast(null, spotOne, spotTwo);
@@ -21,7 +21,7 @@ function cruzData() {
 	spot="santa-cruz";
 	title="Santa Cruz";
 	tideGraph(null, spot, title);
-	document.getElementById("titlePage").innerHTML = title + " Surf Report and Tide Graph";
+	document.getElementById("titlePage").innerHTML = title + " Surf Report (" + day + ")";
 	spotOne=2;
 	spotTwo=147;
 	generalForecast(null, spotOne, spotTwo);
