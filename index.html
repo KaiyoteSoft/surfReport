@@ -29,7 +29,7 @@
 </head>
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="tideGraph(formatted, 'santa-cruz', 'Santa Cruz'); spotReport(147); windForecast(); sunrise(); weatherConditions(); generalForecast(null, 2, 147);">
+<body data-spy="scroll" data-target=".navbar" data-offset="100" onload="tideGraph(formatted, 'santa-cruz', 'Santa Cruz'); spotReport(147); windForecast(); sunrise(); weatherConditions(); generalForecast(null, 2, 147); showMenu();">
 
 <!-- Basic navigation bar that collapses on mobile; see lines 32 and 39 -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -43,9 +43,9 @@
 			<a class="navbar-brand" id="homeButton" href="#surfSection">Kai's Surf Report</a>
 		</div>
 		<div class="collapse navbar-collapse" id="surfNavbar">
-		<ul class="nav navbar-nav">
-			<li><a onClick="cruzData()">Santa Cruz</a></li>
-			<li><a onClick="barbaraData();">Santa Barbara</a></li>
+		<ul id="navMenu" class="nav navbar-nav">
+			<li><a data-toggle="tab" class="active" onClick="cruzData()">Santa Cruz</a></li>
+			<li><a data-toggle="tab" onClick="barbaraData();">Santa Barbara</a></li>
 			<li><a href="#weatherSection">Weather</a></li>
 			<li><a href="displaySpots.html">California Overview</a></li>
 		</ul>
@@ -202,6 +202,11 @@
 		</div>
 	</div>
 </div>
+
+<!-- <div id="section1">
+  <h1>Section 1</h1>
+  <p>Try to scroll this page and look at the navigation bar while scrolling!</p>
+</div> -->
 
 <!-- <div id="elem"></div> -->
 

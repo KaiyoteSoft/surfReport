@@ -5,6 +5,10 @@ var title;
 var spotOne;
 var spotTwo;
 
+function showMenu() {
+	$("#navMenu a:first").tab("show");
+};
+
 function padNumber(number) {
     var string  = '' + number;
     string      = string.length < 2 ? '0' + string : string;
@@ -45,7 +49,7 @@ function generalForecast(date, first, second) {
 	success: function(hook) {
 		var waveData3 = hook;
 
-		var waveShape = waveData3[0].shape_full;
+		var waveShape = waveData3[0].shape_detail.swell;
 		document.getElementById('waveShape').innerHTML = "Wave Shape: " + waveShape;
 		// document.getElementById('elem').innerHTML = formatted;
 		}

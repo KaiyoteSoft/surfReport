@@ -31,3 +31,4 @@ function testStrip() {
 	spotsContainer.display = "block";
 	spotsContainer.visibility = "visible";
 }
+
