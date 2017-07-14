@@ -1,0 +1,95 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<title>Kai's Surf Report</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+	<link rel="stylesheet" href="surfStyle.css">
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="searchSpots.js"></script>
+	<script type="text/javascript" src="dataGrabber2.js"></script>
+	<script type="text/javascript" src="canvasjs.min.js"></script>
+	<!-- Bootstrap CDN for easier styling -->
+
+	<!-- Latest compiled and minified CSS -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+
+<body id="top" data-spy="scroll" data-target=".navbar" data-offset="50" onload="searchSpots('orange-county');">
+
+<!-- Basic navigation bar that collapses on mobile; see lines 32 and 39 -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#surfNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="homeButton" href="#top">California Overview</a>
+		</div>
+		<div class="collapse navbar-collapse" id="surfNavbar">
+		<ul class="nav navbar-nav">
+			<li><a href="index.html">Kai's Surf Report</a></li>
+		</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- First section — contains tide and surf forecast -->
+<div class="container-fluid" id="surfSection">
+<div class="row">
+	<div style="text-align: center; padding-top: 10px;" class="dropdown">
+		<button class="btn btn-lg btn-primary dropdown-toggle" type="button" data-toggle="dropdown">County Search
+			<span class="caret"></span>
+		</button>
+		<ul id="centerMenu" class="dropdown-menu">
+			<li><a onClick="searchSpots('san-francisco')">San Francisco</a></li>
+			<li><a onClick="searchSpots('san-mateo')">San Mateo</a></li>
+			<li><a onClick="searchSpots('santa-cruz')">Santa Cruz</a></li>
+			<li><a onClick="searchSpots('monterey')">Monterey</a></li>
+			<li><a onClick="searchSpots('san-luis-obispo')">San Luis Obispo</a></li>
+			<li><a onClick="searchSpots('santa-barbara')">Santa Barbara</a></li>
+			<li><a onClick="searchSpots('ventura')">Ventura</a></li>
+			<li><a onClick="searchSpots('los-angeles')">Los Angeles</a></li>
+			<li><a onClick="searchSpots('orange-county')">Orange County</a></li>
+			<li><a onClick="searchSpots('san-diego')">San Diego</a></li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10">
+		<div id="container" style="height: 250px; width: 100%;"></div>
+	</div>
+	<div class="col-sm-1"></div>
+</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div id="listSpots"></div>
+	</div>
+	<div class="col-sm-3"></div>
+</div>
+
+<!-- <div id="elem"></div> -->
+
+
+<!-- Code for footer, mainly attributing the many API's I used -->
+<footer>
+	<p>Developed by Kai Oda</p>
+	<p>Powered by <a target="_blank" href="http://www.spitcast.com/">Spitcast API</a></p>
+	<p>Additional content from <a target="_blank" href="https://www.wunderground.com/">Weather API</a> and <a href="https://github.com/mourner/suncalc" target="_blank"> SunCalc Library</a></p>
+</footer>
+</body>
+
+</html>
