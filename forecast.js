@@ -12,9 +12,18 @@ var fifth = 110;
 var sixth = 135;
 var seventh = 160;
 
-function weekForecast(first, second) {
-	spotOne = first;
-	spotTwo = second;
+function weekForecast() {
+	var rawURL = window.location.href;
+	var editedURL = rawURL.substr(rawURL.indexOf("?")+1)
+	var parsedURL = editedURL.split(',');
+	var spotName = parsedURL[0];
+	spotName = spotName.replace('%20',' ')
+	var spotOne = parsedURL[1];
+	var spotTwo = parsedURL[2];
+	console.log(parsedURL);
+	// spotOne = first;
+	// spotTwo = second;
+	document.getElementById('firstDay').innerHTML = "<p>Loading...</p>";
 	jQuery.ajax ({
 		url: 'http://api.spitcast.com/api/spot/forecast/'+spotOne+'/?dcat=week',
 		type: 'GET',
@@ -140,6 +149,9 @@ function weekForecast(first, second) {
 				seventhHeader+
 				'<tr><td>'+seventhMinSize+' - '+seventhMaxSize+'ft</td></tr>'+
 				'<tr><td>'+seventhMaxShape+'</td></tr></table>'; 
+
+//Display the name of the location 
+				document.getElementById("titlePage").innerHTML = spotName+': Seven Day Forecast';
 
 //Determines the color of the table based on wave shape
 				if (firstMaxShape==="Poor"||firstMaxShape==="Poor-Fair"){

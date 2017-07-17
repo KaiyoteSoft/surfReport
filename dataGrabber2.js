@@ -248,4 +248,7 @@ function tideGraph(date, area, name) {
 		})
 }
 
+function forecastURL() {
+		window.open('forecast.html?'+title+','+spotOne+','+spotTwo, "_self");
+}
 
