@@ -22,7 +22,7 @@ function cruzData() {
 	title="Santa Cruz";
 	tideGraph(null, spot, title);
 	document.getElementById("titlePage").innerHTML = title + " Surf Report (" + day + ")";
-	spotOne=2;
+	spotOne=1;
 	spotTwo=147;
 	generalForecast(null, spotOne, spotTwo);
 	windForecast();

@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="weather.js"></script>
 	<script type="text/javascript" src="barbaraData.js"></script>
 	<script type="text/javascript" src="searchSpots.js"></script>
+	<script type="text/javascript" src="forecast.js"></script>
 	<script type="text/javascript" src="canvasjs.min.js"></script>
 	<script type="text/javascript" src="suncalc.js"></script>
 
@@ -29,7 +30,7 @@
 </head>
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="100" onload="tideGraph(formatted, 'santa-cruz', 'Santa Cruz'); spotReport(147); windForecast(); sunrise(); weatherConditions(); generalForecast(null, 2, 147); showMenu();">
+<body data-spy="scroll" data-target=".navbar" data-offset="100" onload="tideGraph(formatted, 'santa-cruz', 'Santa Cruz'); spotReport(147); windForecast(); sunrise(); weatherConditions(); generalForecast(null, 1, 147); showMenu();">
 
 <!-- Basic navigation bar that collapses on mobile; see lines 32 and 39 -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -99,6 +100,7 @@
 		
 	</div>
 
+
 <div class="row">
 	<div class="col-sm-4"></div>
 	<div class="col-sm-4">
@@ -111,6 +113,7 @@
 				<li><a onClick="forecast(1)">Tomorrow</a></li>
 				<li><a onClick="forecast(2)">Two-day Forecast</a></li>
 				<li><a onClick="forecast(3)">Three-day Forecast</a></li>
+				<li><a href="forecast.html">7-day Overview</a></li>
 			</ul>
 		</div>
 	</div>

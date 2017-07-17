@@ -1,3 +1,4 @@
+/*jslint sub: true, maxerr: 50, indent: 4, browser: true */
 var editedDate; 
 var spotId; 
 var spot;
@@ -22,19 +23,19 @@ function generalForecast(date, first, second) {
 	jQuery.ajax ({
 		url: 'http://api.spitcast.com/api/spot/forecast/'+spotOne+'/?dcat=day&dval='+forecastDate,
 		type: 'GET',
-		success: function(steamerLane) {
-			var waveData = steamerLane;
+		success: function(dataOne) {
+			var waveData = dataOne;
 
-			var maxWaveSize = waveData[0].size;
+			var maxWaveSize = waveData[10].size;
 			// console.log(maxWaveSize);
 
 		jQuery.ajax ({
 			url: 'http://api.spitcast.com/api/spot/forecast/'+spotTwo+'/?dcat=day&dval='+forecastDate,
 			type: 'GET',
-			success: function(hook) {
-				var waveData2 = hook;
+			success: function(dataTwo) {
+				var waveData2 = dataTwo;
 
-				var minWaveSize = waveData2[0].size;
+				var minWaveSize = waveData2[10].size;
 				// console.log(minWaveSize);
 				document.getElementById('waveSize').innerHTML = minWaveSize + " - " + maxWaveSize + " feet";
 				}
@@ -44,12 +45,12 @@ function generalForecast(date, first, second) {
 	})
 
 	jQuery.ajax ({
-	url: 'http://api.spitcast.com/api/spot/forecast/'+spotTwo+'/?dcat=day&dval='+forecastDate,
+	url: 'http://api.spitcast.com/api/spot/forecast/'+spotOne+'/?dcat=day&dval='+forecastDate,
 	type: 'GET',
-	success: function(hook) {
-		var waveData3 = hook;
+	success: function(dataOne) {
+		var waveData3 = dataOne;
 
-		var waveShape = waveData3[0].shape_detail.swell;
+		var waveShape = waveData3[10].shape_detail.swell;
 		document.getElementById('waveShape').innerHTML = "Wave Shape: " + waveShape;
 		// document.getElementById('elem').innerHTML = formatted;
 		}
@@ -246,4 +247,5 @@ function tideGraph(date, area, name) {
 			}
 		})
 }
+
 
