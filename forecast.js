@@ -10,7 +10,7 @@ var third = 60;
 var fourth = 85;
 var fifth = 110;
 var sixth = 135;
-var seventh = 160;
+var seventh = 145;
 
 function weekForecast() {
 	var rawURL = window.location.href;
@@ -66,7 +66,12 @@ function weekForecast() {
 			var sixthEditedDate = date6.substring(5);
 			var sixthDate = sixthEditedDate.slice(0,-2);
 
-			var seventhMaxSize = waveData[seventh].size;
+			if (waveData[seventh].size===undefined) {
+				var seventhMaxSize = "No data";
+			}
+			else {
+				seventhMaxSize = waveData[seventh].size;
+			}
 			var seventhMaxShape = waveData[seventh].shape_detail.swell;
 			var date7 = waveData[seventh].gmt;
 			var seventhEditedDate = date7.substring(5);
@@ -103,9 +108,19 @@ function weekForecast() {
 				var sixthDay = waveData2[sixth].day;
 				var sixthMinShape = waveData2[sixth].shape_detail.swell;
 
-				var seventhMinSize = waveData2[seventh].size
+				if (waveData2[seventh].size===undefined) {
+					var seventhMinSize = "No data";
+				}
+				else {
+					seventhMinSize = waveData2[seventh].size;
+				}
 				var seventhDay = waveData2[seventh].day;
 				var seventhMinShape = waveData2[seventh].shape_detail.swell;
+
+//checks to see if the seventh day has data 
+if (seventhMaxSize===undefined) {
+	seventhMaxSize = "No data";
+}
 
 //this creates the header separately and then pushes the info to the divs on the html file 
 				var firstHeader = '<tr><th id="header1" style="text-align: center;">'+firstDay+': '+firstDate+'</th></tr>'				
